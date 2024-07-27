@@ -78,40 +78,47 @@ const NavItem = ({ href, children }) => (
 );
 
 const TermsOfService = ({ isOpen, onClose }) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose} className="bg-blue-100 w-3/4 max-w-5xl mx-auto">
-      <div className="flex">
-        <aside className="w-1/4 p-4 bg-blue-200">
-          <h3 className="text-xl font-bold mb-4">목차</h3>
-          <ul>
-            <li className="mb-2">
-              <a href="#section1" onClick={(e) => { e.preventDefault(); smoothScroll('#section1'); }}>제 1 장 총칙</a>
-            </li>
-            <li className="mb-2">
-              <a href="#section2" onClick={(e) => { e.preventDefault(); smoothScroll('#section2'); }}>제 2 장 이용계약</a>
-            </li>
-            <li className="mb-2">
-              <a href="#section3" onClick={(e) => { e.preventDefault(); smoothScroll('#section3'); }}>제 3 장 계약 당사자의 의무</a>
-            </li>
-            <li className="mb-2">
-              <a href="#section4" onClick={(e) => { e.preventDefault(); smoothScroll('#section4'); }}>제 4 장 서비스의 제공 및 이용</a>
-            </li>
-            <li className="mb-2">
-              <a href="#section5" onClick={(e) => { e.preventDefault(); smoothScroll('#section5'); }}>제 5 장 기타</a>
-            </li>
-            <li className="mb-2">
-              <a href="#section6" onClick={(e) => { e.preventDefault(); smoothScroll('#section6'); }}>부칙</a>
-            </li>
-          </ul>
-        </aside>
-        <main className="w-3/4 p-4 overflow-y-auto">
-          <h2 className="text-2xl font-bold mb-4">이용약관</h2>
-          <section id="section1" className="mb-8">
-            <h3 className="text-xl font-bold mb-2">제 1 장 총칙</h3>
-            <p><strong>제 1 조 (목적)</strong></p>
-            <p>본 약관은 개인(이하 “개발자”라 합니다)이 운영하는 디스코드 봇 서비스 ‘데베’(이하 “봇”이라 합니다)에서 제공하는 온라인 서비스(이하 “서비스”라 합니다)를 이용함에 있어 봇과 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+  if (!isOpen) return null;
 
-            <p><strong>제 2 조 (용어의 정의)</strong></p>
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="bg-white w-3/4 max-w-5xl h-[90vh] rounded-lg flex flex-col">
+        <div className="flex justify-between items-center p-4 bg-blue-200">
+          <h2 className="text-2xl font-bold">이용약관</h2>
+          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+            <X size={24} />
+          </button>
+        </div>
+        <div className="flex flex-1 overflow-hidden">
+          <aside className="w-1/4 p-4 bg-blue-100 overflow-y-auto">
+            <h3 className="text-xl font-bold mb-4">목차</h3>
+            <ul>
+              <li className="mb-2">
+                <a href="#section1" onClick={(e) => { e.preventDefault(); smoothScroll('#section1'); }}>제 1 장 총칙</a>
+              </li>
+              <li className="mb-2">
+                <a href="#section2" onClick={(e) => { e.preventDefault(); smoothScroll('#section2'); }}>제 2 장 이용계약</a>
+              </li>
+              <li className="mb-2">
+                <a href="#section3" onClick={(e) => { e.preventDefault(); smoothScroll('#section3'); }}>제 3 장 계약 당사자의 의무</a>
+              </li>
+              <li className="mb-2">
+                <a href="#section4" onClick={(e) => { e.preventDefault(); smoothScroll('#section4'); }}>제 4 장 서비스의 제공 및 이용</a>
+              </li>
+              <li className="mb-2">
+                <a href="#section5" onClick={(e) => { e.preventDefault(); smoothScroll('#section5'); }}>제 5 장 기타</a>
+              </li>
+              <li className="mb-2">
+                <a href="#section6" onClick={(e) => { e.preventDefault(); smoothScroll('#section6'); }}>부칙</a>
+              </li>
+            </ul>
+          </aside>
+          <main className="flex-1 p-4 overflow-y-auto">
+            <section id="section1" className="mb-8">
+              <h3 className="text-xl font-bold mb-2">제 1 장 총칙</h3>
+              <p><strong>제 1 조 (목적)</strong></p>
+              <p>본 약관은 개인(이하 "개발자"라 합니다)이 운영하는 디스코드 봇 서비스 '데베'(이하 "봇"이라 합니다)에서 제공하는 온라인 서비스(이하 "서비스"라 합니다)를 이용함에 있어 봇과 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+              <p><strong>제 2 조 (용어의 정의)</strong></p>
             <p>본 약관에서 사용하는 용어는 다음과 같이 정의한다.</p>
             <ul>
               <li>“봇”이란 개발자가 디스코드 플랫폼에서 이용자에게 다양한 기능과 정보를 제공하기 위하여 개발한 소프트웨어 프로그램을 말합니다.</li>
@@ -179,15 +186,16 @@ const TermsOfService = ({ isOpen, onClose }) => {
     <p><strong>제 15 조 (재판권 및 준거법)</strong></p>
     <p>개발자와 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.</p>
   </section>
-
-  <section id="section6" className="mb-8">
-    <h3 className="text-xl font-bold mb-2">부칙</h3>
-    <p>본 약관은 2024년 7월 19일부터 적용됩니다.</p>
-  </section>
-</main>
-</div>
-</Modal>
-);
+            {/* ... 다른 섹션들 ... */}
+            <section id="section6" className="mb-8">
+              <h3 className="text-xl font-bold mb-2">부칙</h3>
+              <p>본 약관은 2024년 7월 19일부터 적용됩니다.</p>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default function DiscordBotLandingPage() {
@@ -228,7 +236,7 @@ export default function DiscordBotLandingPage() {
           <ul className={`md:flex ${isMenuOpen ? 'block' : 'hidden'}`}>
             <NavItem href="#features">기능</NavItem>
             <NavItem href="#about">소개</NavItem>
-            <NavItem href="#contact">문의</NavItem>
+            <NavItem href="#contact">서포트</NavItem>
             <li className="md:ml-6">
               <button
                 onClick={() => setIsTermsOpen(true)}
@@ -256,6 +264,9 @@ export default function DiscordBotLandingPage() {
       <main className="container mx-auto py-12">
         <section id="features" className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12">주요 기능</h2>
+          <p className="text-center text-gray-600 mb-8">
+            (아이콘에 마우스를 가져다 대면 예시사진이 나와요.)
+         </p>          
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
               icon={<MessageCircle className="text-indigo-500" size={48} />}
@@ -291,8 +302,13 @@ export default function DiscordBotLandingPage() {
           <p className="max-w-2xl mx-auto text-gray-600">
             데베에게 하트를 주고 싶으신가요? 아래 링크를 통해 하트를 보내주세요!
           </p>
-          <a href="https://koreanbots.dev/bots/1200806383159869532" className="text-red-500 hover:underline">
+          <a 
+            href="https://koreanbots.dev/bots/1200806383159869532"
+            className="text-red-500 hover:underline"
+            style={{ textDecorationThickness: '2px', textUnderlineOffset: '4px' }}
+          >
             데베에게 하트주기
+          
           </a>
         </section>
 
@@ -303,7 +319,8 @@ export default function DiscordBotLandingPage() {
           </p>
           <a
             href="https://discord.gg/t4GRK6JN5N"
-            className="text-indigo-500 hover:underline"
+            className="text-indigo-600 hover:underline"
+            style={{ textDecorationThickness: '2px', textUnderlineOffset: '4px' }}
           >
             데베의 디스코드 지원서버
           </a>
