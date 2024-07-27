@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ArrowRight, MessageCircle, Soup, NotebookPen, X } from 'lucide-react';
+import { ArrowRight, Bug, Soup, NotebookPen, X } from 'lucide-react';
 
 // 이미지 import
-import chatBotImage from './images/chatbot.jpg';
-import notebookImage from './images/notebook.jpg';
-import mealsImage from './images/meals.jpg';
+import chatBotImage from './images/report.mp4';
+import notebookImage from './images/note.mp4';
+import mealsImage from './images/meal.mp4';
 import logoImage from './images/logo.png';  // Import your logo image
 
 const Modal = ({ isOpen, onClose, children, className = '' }) => {
@@ -252,7 +252,7 @@ export default function DiscordBotLandingPage() {
       <header className="text-center py-20 bg-indigo-500 text-white">
         <h1 className="text-5xl font-bold mb-4">국내에 없던 새 유틸봇</h1>
         <p className="text-xl mb-8">
-          유틸리티 기능을 하면서도 놀 수 있는 봇을 찾는다면?
+          최강의 유틸봇을 찾는다면?
         </p>
         <a href="https://discord.com/oauth2/authorize?client_id=1200806383159869532">
           <button className="bg-white text-indigo-500 px-6 py-2 rounded-full font-semibold text-lg hover:bg-indigo-100 transition duration-300">
@@ -269,9 +269,9 @@ export default function DiscordBotLandingPage() {
          </p>          
           <div className="grid md:grid-cols-3 gap-8">
             <FeatureCard
-              icon={<MessageCircle className="text-indigo-500" size={48} />}
-              title="Chating Bot"
-              description="데베야 `할 말`로 데베와 대화를 해보세요."
+              icon={<Bug className="text-indigo-500" size={48} />}
+              title="Report"
+              description="데베의 버그를 신고하면 개발자의 DM으로 연락이 가요."
               imageSrc={chatBotImage}
             />
             <FeatureCard
